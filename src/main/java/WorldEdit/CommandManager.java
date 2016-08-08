@@ -104,36 +104,40 @@ public class CommandManager {
         return blocks;
     }
 
-    public int cyl(Position center, int radius, Block b) {
+    public int cyl(Position center, int radius, int height, Block b) {
         Vector3 v = new Vector3();
         int blocks = 0;
 
-        for (int x = -radius; x <= radius; x++) {
-            for (int z = -radius; z <= radius; z++) {
-                if (x * x + z * z <= radius * radius) {
-                    center.level.setBlock(v.setComponents(center.x + x, center.y, center.z + z), b, true, false);
-                    blocks++;
-                }
-            }
+        for (int y = (int) center.y; y < (int) (center.y + height); y++) {
+        	for (int x = -radius; x <= radius; x++) {
+            	for (int z = -radius; z <= radius; z++) {
+                	if (x * x + z * z <= radius * radius) {
+                		center.level.setBlock(v.setComponents(center.x + x, y, center.z + z), b, true, false);
+                		blocks++;
+                	}
+            	}
+        	}
         }
 
         return blocks;
     }
 
-    public int hcyl(Position center, int radius, Block b) {
+    public int hcyl(Position center, int radius, int height, Block b) {
 
         Vector3 v = new Vector3();
         int blocks = 0;
 
-        for (int x = -radius; x <= radius; x++) {
-            for (int z = -radius; z <= radius; z++) {
-                if (x * x + z * z <= radius * radius) {
-                    if (x * x + z * z > (radius - 1) * (radius - 1)) {
-                        center.level.setBlock(v.setComponents(center.x + x, center.y, center.z + z), b, true, false);
-                        blocks++;
-                    }
-                }
-            }
+        for (int y = (int) center.y; y < (int) (center.y + height); y++) {
+        	for (int x = -radius; x <= radius; x++) {
+        		for (int z = -radius; z <= radius; z++) {
+        			if (x * x + z * z <= radius * radius) {
+        				if (x * x + z * z > (radius - 1) * (radius - 1)) {
+                        	center.level.setBlock(v.setComponents(center.x + x, y, center.z + z), b, true, false);
+                        	blocks++;
+                    	}
+                	}
+            	}
+        	}
         }
 
         return blocks;

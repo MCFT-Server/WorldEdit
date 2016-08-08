@@ -103,8 +103,8 @@ public class WorldEdit extends PluginBase implements Listener {
 
             switch (label.toLowerCase()) {
                 case "/cyl":
-                    if (args.length != 2) {
-                        p.sendMessage(TextFormat.YELLOW + "Use //cyl <block> <radius>");
+                    if (args.length != 3) {
+                        p.sendMessage(TextFormat.YELLOW + "Use //cyl <block> <radius> <height>");
                         return false;
                     }
 
@@ -114,11 +114,11 @@ public class WorldEdit extends PluginBase implements Listener {
                         return false;
                     }
 
-                    p.sendMessage(TextFormat.BLUE + commandManager.cyl(p.getPosition(), Integer.valueOf(args[1]), b) + TextFormat.GREEN + " block(s) have been changed.");
+                    p.sendMessage(TextFormat.BLUE + commandManager.cyl(p.getPosition(), Integer.valueOf(args[1]), Integer.valueOf(args[2]), b) + TextFormat.GREEN + " block(s) have been changed.");
                     return true;
                 case "/hcyl":
-                    if (args.length != 2) {
-                        p.sendMessage(TextFormat.YELLOW + "Use //hcyl <block> <radius>");
+                    if (args.length != 3) {
+                        p.sendMessage(TextFormat.YELLOW + "Use //hcyl <block> <radius> <height>");
                         return false;
                     }
 
@@ -128,7 +128,7 @@ public class WorldEdit extends PluginBase implements Listener {
                         return false;
                     }
 
-                    p.sendMessage(TextFormat.BLUE + commandManager.hcyl(p.getPosition(), Integer.valueOf(args[1]), b) + TextFormat.GREEN + " block(s) have been changed.");
+                    p.sendMessage(TextFormat.BLUE + commandManager.hcyl(p.getPosition(), Integer.valueOf(args[1]), Integer.valueOf(args[2]), b) + TextFormat.GREEN + " block(s) have been changed.");
                     return true;
                 case "/sphere":
                     if (args.length != 2) {
